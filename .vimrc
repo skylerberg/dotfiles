@@ -12,7 +12,21 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'git://github.com/SirVer/ultisnips.git'
 
-Plugin 'https://github.com/honza/vim-snippets.git'
+Plugin 'git://github.com/honza/vim-snippets.git'
+
+Plugin 'git://github.com/tpope/vim-surround.git'
+
+Plugin 'git://github.com/tpope/vim-repeat.git'
+
+Plugin 'git://github.com/vim-scripts/matchit.zip.git'
+
+Plugin 'git://github.com/vim-scripts/a.vim.git'
+
+Plugin 'git://github.com/scrooloose/syntastic.git'
+
+Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
+
+Plugin 'git://github.com/tpope/vim-fugitive.git'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -49,14 +63,12 @@ filetype plugin indent on    " required
 let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>" 
+let g:EasyMotion_leader_key = '<Leader>'
 
-set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+set mouse=a		" Enable mouse usage (all modes)
 
 filetype plugin indent on
 syntax on
@@ -87,3 +99,9 @@ nnoremap <silent> ,/ :let @/ = ""<CR>
 set splitbelow
 set splitright
 set lazyredraw
+set hidden
+let mapleader = ","
+set history=1000
+set backspace=2
+set ttimeoutlen=100
+set notimeout

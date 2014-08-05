@@ -1,5 +1,4 @@
 # TODO Make this less computer specific
-echo `pwd`
 export GOPATH=/home/skyler/go
 export PATH=$GOPATH/bin:$PATH
 
@@ -13,6 +12,7 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias vi='vim'
 alias l=ls
+alias .='!!'
 
 
 if [ -e ~/.aliases ]
