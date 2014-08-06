@@ -70,7 +70,6 @@ let g:EasyMotion_leader_key = '<Leader>'
 "set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 set autowrite		" Automatically save before commands like :next and :make
-set mouse=a		" Enable mouse usage (all modes)
 
 filetype plugin indent on
 syntax on
