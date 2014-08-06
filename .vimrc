@@ -28,6 +28,8 @@ Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
 
 Plugin 'git://github.com/tpope/vim-fugitive.git'
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
