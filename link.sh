@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=".bashrc .emacs .gitconfig .gitignore .inputrc .pylintrc .tmux.conf .vimrc .vim"
+DOTFILES=".bashrc .emacs .gitconfig .gitignore .inputrc .pylintrc .tmux.conf .vimrc .vim .zshrc"
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 
