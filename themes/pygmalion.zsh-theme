@@ -1,5 +1,5 @@
 # Modified from the original version included in oh-my-zsh
-# Now wraps at 80 instead of 40
+# No longer wraps the prompt
 # Added cooler arrow
 
 prompt_setup_pygmalion(){
@@ -25,9 +25,6 @@ prompt_pygmalion_precmd(){
 
   local nl=""
 
-  if [[ $prompt_length -gt 79 ]]; then
-    nl=$'\n%{\r%}';
-  fi
   PROMPT="$base_prompt$gitinfo$nl$post_prompt"
 }
 

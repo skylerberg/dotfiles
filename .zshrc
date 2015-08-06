@@ -23,7 +23,7 @@ antigen bundle pip
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 
-antigen theme i https://github.com/skylerberg/dotfiles.git pygmalion
+antigen theme https://github.com/skylerberg/dotfiles.git themes/pygmalion
 
 
 bindkey -v
