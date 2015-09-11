@@ -10,6 +10,7 @@ autocmd Filetype bib setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd Filetype gherkin setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype jinja setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.yml set syntax=sls
 au BufReadPost *.yml set syntax=sls
 
@@ -31,8 +32,11 @@ Plugin 'git://github.com/saltstack/salt-vim.git'
 Plugin 'git://github.com/kien/ctrlp.vim.git'
 Plugin 'git://github.com/vim-scripts/closetag.vim.git'
 Plugin 'git://github.com/wting/rust.vim'
-"Plugin 'git://github.com/Valloric/YouCompleteMe.git'
+Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 Plugin 'git://github.com/tpope/vim-cucumber.git'
+Plugin 'git://github.com/airblade/vim-gitgutter.git'
+Plugin 'git://github.com/maxbrunsfeld/vim-emacs-bindings.git'
+Plugin 'hynek/vim-python-pep8-indent'
 Bundle "lepture/vim-jinja"
 
 call vundle#end()
@@ -52,6 +56,8 @@ let g:syntastic_python_checkers = ['flake8', 'pylint']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 let g:syntastic_python_pylint_args = '--rcfile=/home/skyler/.pylintrc'
+let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -83,6 +89,7 @@ set backspace=2
 set ttimeoutlen=100
 set notimeout
 set autowrite
+set scrolloff=5
 set mouse=""
 
 let mapleader = ","
