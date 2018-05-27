@@ -44,6 +44,7 @@ fi
 alias l=ls
 alias emacs='emacs -nw'
 
+alias pag='ps aux | grep'
 
 # Eternal bash history.
 # ---------------------
