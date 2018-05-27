@@ -9,11 +9,22 @@ else
   export EDITOR=vim
 fi
 
+if command_exists synclient ; then
+  synclient RightButtonAreaLeft=0
+  synclient RightButtonAreaTop=0
+fi
+
 export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\t\[\033[01;34m\] \w \$\[\033[00m\] "
 
 alias mkcd='_(){ mkdir $1; cd $1; }; _'
 alias update="sudo apt-get update && sudo apt-get -y upgrade"
 alias ..="cd .."
+alias red="redshift -O 3700"
+alias blue="redshift -O 5500"
+alias dark="sudo bash -c 'echo 1 > /sys/class/backlight/intel_backlight/brightness'"
+brightness () {
+	sudo bash -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
+}
 
 if command -v xsel &> /dev/null; then
   alias pbcopy='xsel --clipboard --input'
@@ -47,4 +58,3 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
