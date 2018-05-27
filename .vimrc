@@ -1,6 +1,10 @@
 set nocompatible
 filetype off
 au Bufread,BufNewFile *.feature set filetype=gherkin
+au Bufread,BufNewFile *.raml set filetype=yaml
+au Bufread,BufNewFile *.svg set filetype=xml
+au Bufread,BufNewFile *.md set filetype=markdown
+autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2
@@ -8,10 +12,16 @@ autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype eruby setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype bib setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd BufReadPost *.cs setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype gherkin setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype jinja setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype markdown setlocal spell expandtab tabstop=3 shiftwidth=3 textwidth=80
+autocmd Filetype vue setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.yml set syntax=sls
+autocmd BufReadPost *.txt set tw=80
 au BufReadPost *.yml set syntax=sls
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -37,9 +47,14 @@ Plugin 'git://github.com/tpope/vim-cucumber.git'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
 Plugin 'git://github.com/maxbrunsfeld/vim-emacs-bindings.git'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'git://github.com/hynek/vim-python-pep8-indent.git'
+Plugin 'posva/vim-vue'
 Bundle "lepture/vim-jinja"
 
+Plugin 'altercation/vim-colors-solarized'
+
 call vundle#end()
+
 filetype plugin indent on
 syntax on
 
@@ -52,7 +67,7 @@ let g:UltiSnipsSnippetDirectories=["custom", "UltiSnips"]
 let g:EasyMotion_leader_key = '<Leader>'
 
 " Syntax checkers
-let g:syntastic_python_checkers = ['flake8', 'pylint']
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 let g:syntastic_python_pylint_args = '--rcfile=/home/skyler/.pylintrc'
@@ -95,6 +110,8 @@ set mouse=""
 let mapleader = ","
 inoremap jj <Esc>
 cnoremap w!! w !sudo tee % >/dev/null
+cnoremap hex %!xxd<CR>
+cnoremap nohex %!xxd -r<CR>
 nnoremap <silent> ,/ :let @/ = ""<CR>
 
 
@@ -106,3 +123,6 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+set background=dark
+colorscheme solarized

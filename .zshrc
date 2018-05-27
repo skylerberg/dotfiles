@@ -28,7 +28,11 @@ antigen theme https://github.com/skylerberg/dotfiles.git themes/pygmalion
 
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey '' history-incremental-search-backward
+bindkey "^?" backward-delete-char
 
+setopt no_hist_verify
+setopt no_share_history
 
 # adapted bashrc
 command_exists () {
@@ -44,13 +48,19 @@ fi
 
 alias mkcd='_(){ mkdir $1; cd $1; }; _'
 alias update="sudo apt-get update && sudo apt-get -y upgrade"
-alias ..="cd .."
+alias red="redshift -O 3700"
+alias blue="redshift -O 5500"
+alias dark="sudo bash -c 'echo 1 > /sys/class/backlight/intel_backlight/brightness'"
+brightness () {
+	sudo bash -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
+}
 
 if command_exists xsel; then
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
 fi
 
+alias vi='vim'
 alias grep='grep --color=auto'
 
 ls --color &> /dev/null
@@ -62,3 +72,6 @@ fi
 
 alias l=ls
 alias emacs='emacs -nw'
+
+# added by travis gem
+[ -f /home/skyler/.travis/travis.sh ] && source /home/skyler/.travis/travis.sh
