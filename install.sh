@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift
+sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
@@ -37,6 +37,8 @@ if ! command -v zsh >/dev/null 2>&1; then
 	sudo apt-get install -y zsh
 	chsh -s `which zsh`
 fi
+
+curl -L git.io/antigen > ~/antigen.zsh
 
 # May as well do an upgrade while we are configuring the new system
 sudo apt-get upgrade -y

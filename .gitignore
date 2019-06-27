@@ -1,3 +1,6 @@
+notes
+.vim/bundle
+
 # Created by https://www.gitignore.io
 
 ### Emacs ###
@@ -42,3 +45,5 @@ tramp
 Session.vim
 .netrwhist
 *~
+
+tags

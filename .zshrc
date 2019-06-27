@@ -25,6 +25,8 @@ antigen bundle zsh-users/zsh-completions
 
 antigen theme https://github.com/skylerberg/dotfiles.git themes/pygmalion
 
+antigen apply
+
 
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
@@ -72,6 +74,28 @@ fi
 
 alias l=ls
 alias emacs='emacs -nw'
+
+alias gcb='git checkout -b'
+alias gcane='git commit --amend --no-edit'
+alias gau='git add -u'
+alias ga='git add'
+alias gc='git commit'
+alias gpb='git push origin $(git branch | grep \* | cut -d " " -f2)'
+alias gp='git pull'
+alias gs='git status'
+alias gd='git diff'
+alias gco='git checkout'
+
+alias python='python3'
+alias pip='pip3'
+
+alias uuid="python -c 'import uuid; print(uuid.uuid4())'"
+
+function runner {
+	while inotifywait --recursive -e close_write . &>/dev/null; do $($@); done
+}
+
+export PATH=$PATH:/home/skyler/.local/bin:/home/skyler/.cargo/bin
 
 # added by travis gem
 [ -f /home/skyler/.travis/travis.sh ] && source /home/skyler/.travis/travis.sh

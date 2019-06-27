@@ -46,8 +46,8 @@ Plugin 'git://github.com/Valloric/YouCompleteMe.git'
 Plugin 'git://github.com/tpope/vim-cucumber.git'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
 Plugin 'git://github.com/maxbrunsfeld/vim-emacs-bindings.git'
-Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'git://github.com/hynek/vim-python-pep8-indent.git'
+Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
 Plugin 'posva/vim-vue'
 Bundle "lepture/vim-jinja"
 
@@ -57,6 +57,8 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
+
+let g:gutentags_ctags_extra_args = ['--fields=+l']
 
 " Set ultisnips triggers
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -68,11 +70,13 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 " Syntax checkers
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 let g:syntastic_python_pylint_args = '--rcfile=/home/skyler/.pylintrc'
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_javascript_eslint_exe = 'npx eslint'
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -113,6 +117,13 @@ cnoremap w!! w !sudo tee % >/dev/null
 cnoremap hex %!xxd<CR>
 cnoremap nohex %!xxd -r<CR>
 nnoremap <silent> ,/ :let @/ = ""<CR>
+
+nnoremap "* "+
+vnoremap "* "+
+xnoremap "* "+
+snoremap "* "+
+cnoremap "* "+
+onoremap "* "+
 
 
 function! s:DiffWithSaved()
