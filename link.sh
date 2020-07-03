@@ -22,6 +22,12 @@ fi
 
 vim +PluginInstall +qall
 
+# Setup YouCompleteMe plugin
+pushd ~/.vim/bundle/YouCompleteMe
+./install.py --go-completer --ts-completer --rust-completer --clang-completer
+popd
+
+
 # Link to mixxx config in $HOME/.mixxx/mixxx.cfg
 if [ ! -d $HOME/.mixxx ]; then
 	mkdir $HOME/.mixxx

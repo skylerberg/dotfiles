@@ -43,6 +43,7 @@ fi
 
 alias l=ls
 alias emacs='emacs -nw'
+alias cow="sudo su postgres -c 'psql cow'"
 
 alias pag='ps aux | grep'
 

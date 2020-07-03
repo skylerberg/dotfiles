@@ -1,25 +1,40 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags gnome-tweaks
+sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common python-software-properties build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
-	sudo apt-get install -y software-properties-common python-software-properties
 	sudo add-apt-repository ppa:neovim-ppa/stable
 	sudo apt-get update
 	sudo apt-get install -y neovim
 	pip install neovim
 fi
 
-# Install solarized theme for terminal and install dconf
-if ! command -v dconf >/dev/null 2>&1; then
-	sudo apt-get install -y dconf-cli
+# Install Go
+if ! command go >/dev/null 2>&1; then
+	sudo add-apt-repository ppa:longsleep/golang-backports
+	sudo apt-get update
+	sudo apt-get install -y golang-go
+fi
+
+# Install Rust
+if ! command -v rustup >/dev/null 2>&1; then
+	curl https://sh.rustup.rs -sSf | sh
+fi
+
+# Install nodejs
+if ! command -v node >/dev/null 2>&1; then
+	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+	sudo apt-get install nodejs
+fi
+
+# Install solarized theme for terminal
+if [! -d "/tmp/gnome-terminal-colors-solarized"]; then
 	pushd /tmp
 	git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 	pushd gnome-terminal-colors-solarized
 	./install.sh
 	popd
-	rm -rf gnome-terminal-colors-solarized
 	popd
 fi
 

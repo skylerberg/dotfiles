@@ -47,21 +47,32 @@ Plugin 'git://github.com/tpope/vim-cucumber.git'
 Plugin 'git://github.com/airblade/vim-gitgutter.git'
 Plugin 'git://github.com/maxbrunsfeld/vim-emacs-bindings.git'
 Plugin 'git://github.com/hynek/vim-python-pep8-indent.git'
-Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
+"Plugin 'git://github.com/ludovicchabant/vim-gutentags.git'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'posva/vim-vue'
 Bundle "lepture/vim-jinja"
+Bundle 'ervandew/supertab'
 
 Plugin 'altercation/vim-colors-solarized'
+
 
 call vundle#end()
 
 filetype plugin indent on
 syntax on
 
-let g:gutentags_ctags_extra_args = ['--fields=+l']
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+noremap <F2> :YcmCompleter FixIt<CR>
+
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+
+"let g:gutentags_ctags_extra_args = ['--fields=+l']
 
 " Set ultisnips triggers
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["custom", "UltiSnips"]
@@ -70,7 +81,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 " Syntax checkers
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_vue_checkers = []
 let g:syntastic_python_pylint_args = '--load-plugins pylint_django'
 let g:syntastic_python_pylint_args = '--rcfile=/home/skyler/.pylintrc'
 let g:syntastic_check_on_wq = 0
@@ -110,6 +121,7 @@ set notimeout
 set autowrite
 set scrolloff=5
 set mouse=""
+set nojoinspaces
 
 let mapleader = ","
 inoremap jj <Esc>
@@ -117,6 +129,8 @@ cnoremap w!! w !sudo tee % >/dev/null
 cnoremap hex %!xxd<CR>
 cnoremap nohex %!xxd -r<CR>
 nnoremap <silent> ,/ :let @/ = ""<CR>
+nnoremap <C-N> :n<CR>
+nnoremap Y y$
 
 nnoremap "* "+
 vnoremap "* "+
@@ -124,6 +138,11 @@ xnoremap "* "+
 snoremap "* "+
 cnoremap "* "+
 onoremap "* "+
+
+" Save with CTRL-S
+nmap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
 
 
 function! s:DiffWithSaved()
