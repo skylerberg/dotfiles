@@ -2,6 +2,6 @@
 	name = Skyler Berg
 	email = skylertheberg@gmail.com
 [push]
-	default = simple
+	default = current
 [core]
 	excludesfile = ~/.gitignore

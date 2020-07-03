@@ -1,5 +1,7 @@
+tmp
 notes
 .vim/bundle
+.vscode
 
 # Created by https://www.gitignore.io
 
@@ -47,3 +49,5 @@ Session.vim
 *~
 
 tags
+tags.lock
+tags.temp

@@ -12,7 +12,7 @@ setopt appendhistory autocd extendedglob nomatch notify
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 
-source ~/.zsh/antigen/antigen.zsh
+source ~/antigen.zsh
 
 antigen use oh-my-zsh
 
@@ -63,7 +63,7 @@ if command_exists xsel; then
 fi
 
 alias vi='vim'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --exclude-dir=node_modules'
 
 ls --color &> /dev/null
 if [ $? -eq 0 ]; then
@@ -90,6 +90,8 @@ alias python='python3'
 alias pip='pip3'
 
 alias uuid="python -c 'import uuid; print(uuid.uuid4())'"
+
+alias cow="sudo su postgres -c 'psql cow'"
 
 function runner {
 	while inotifywait --recursive -e close_write . &>/dev/null; do $($@); done
