@@ -2,7 +2,7 @@
 
 sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli cmake fdfind
 
-sudo apt-get install python-software-properties 
+sudo apt-get install python-software-properties
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
