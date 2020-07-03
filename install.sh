@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip
+sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags gnome-tweaks
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
@@ -11,14 +11,14 @@ if ! command -v nvim >/dev/null 2>&1; then
 	pip install neovim
 fi
 
-# Install solarized theme for terminal
+# Install solarized theme for terminal and install dconf
 if ! command -v dconf >/dev/null 2>&1; then
 	sudo apt-get install -y dconf-cli
 	pushd /tmp
 	git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
-	cd gnome-terminal-colors-solarized
+	pushd gnome-terminal-colors-solarized
 	./install.sh
-	cd ..
+	popd
 	rm -rf gnome-terminal-colors-solarized
 	popd
 fi
@@ -36,9 +36,12 @@ fi
 if ! command -v zsh >/dev/null 2>&1; then
 	sudo apt-get install -y zsh
 	chsh -s `which zsh`
+	curl -L git.io/antigen > ~/antigen.zsh
 fi
 
-curl -L git.io/antigen > ~/antigen.zsh
+if ! command -v rustup >/dev/null 2>&1; then 
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 # May as well do an upgrade while we are configuring the new system
 sudo apt-get upgrade -y

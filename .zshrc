@@ -12,7 +12,7 @@ setopt appendhistory autocd extendedglob nomatch notify
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 
-source ~/.zsh/antigen/antigen.zsh
+source ~/antigen.zsh
 
 antigen use oh-my-zsh
 
