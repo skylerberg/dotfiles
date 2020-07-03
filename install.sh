@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common python-software-properties build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli
+sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli cmake fdfind
+
+sudo apt-get install python-software-properties 
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
@@ -25,7 +27,8 @@ fi
 # Install nodejs
 if ! command -v node >/dev/null 2>&1; then
 	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-	sudo apt-get install nodejs
+	sudo apt-get install -y nodejs npm
+	sudo apt-get install -y npm
 fi
 
 # Install solarized theme for terminal

@@ -4,6 +4,14 @@ set -x
 # Remove useless folders
 rm -rf ~/Documents ~/Documents ~/examples.desktop ~/Music ~/Pictures ~/Public ~/Templates ~/Videos
 
+FIREFOX_PROFILE=$(fdfind -g '*.default' ~/.mozilla)
+mkdir -p $FIREFOX_PROFILE/chrome;
+cp ./userChrome.css $FIREFOX_PROFILE/chrome/
+
+FIREFOX_PROFILE=$(fdfind -g '*.default-release' ~/.mozilla)
+mkdir -p $FIREFOX_PROFILE/chrome;
+cp ./userChrome.css $FIREFOX_PROFILE/chrome/
+
 dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
 dconf write /org/gnome/desktop/peripherals/touchpad/natural-scroll true
 dconf write /org/gnome/desktop/sound/allow-volume-above-100-percent true
@@ -39,3 +47,5 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
 dconf write /org/gnome/desktop/notifications/show-banners false
 dconf write /org/gnome/settings-daemon/plugins/power/ambient-enabled false
+
+dconf write /org/gnome/desktop/search-providers/disable "['io.elementary.appcenter.desktop']"

@@ -16,6 +16,7 @@ fi
 
 export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\t\[\033[01;34m\] \w \$\[\033[00m\] "
 
+alias fd=fdfind
 alias mkcd='_(){ mkdir $1; cd $1; }; _'
 alias update="sudo apt-get update && sudo apt-get -y upgrade"
 alias ..="cd .."
