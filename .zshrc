@@ -32,6 +32,7 @@ bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey '' history-incremental-search-backward
 bindkey "^?" backward-delete-char
+bindkey '^[[Z' reverse-menu-complete
 
 setopt no_hist_verify
 setopt no_share_history
@@ -63,7 +64,7 @@ if command_exists xsel; then
 fi
 
 alias vi='vim'
-alias grep='grep --color=auto --exclude-dir=node_modules'
+alias grep='grep --color=auto --exclude-dir=node_modules --exclude-dir=dist'
 
 ls --color &> /dev/null
 if [ $? -eq 0 ]; then
@@ -97,7 +98,13 @@ function runner {
 	while inotifywait --recursive -e close_write . &>/dev/null; do $($@); done
 }
 
-export PATH=$PATH:/home/skyler/.local/bin:/home/skyler/.cargo/bin
+export PATH=$PATH:/home/skylerberg/.local/bin
 
 # added by travis gem
 [ -f /home/skyler/.travis/travis.sh ] && source /home/skyler/.travis/travis.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/skylerberg/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/home/skylerberg/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/skylerberg/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/skylerberg/Desktop/google-cloud-sdk/completion.zsh.inc'; fi

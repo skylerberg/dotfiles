@@ -1,4 +1,6 @@
 tmp
+tmp*
+perf.data*
 notes
 .vim/bundle
 .vscode

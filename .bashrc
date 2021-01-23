@@ -33,7 +33,7 @@ if command -v xsel &> /dev/null; then
 fi
 
 alias vi='vim'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --exclude= "*.pyc"'
 
 ls --color &> /dev/null
 if [ $? -eq 0 ]; then

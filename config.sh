@@ -49,3 +49,8 @@ dconf write /org/gnome/desktop/notifications/show-banners false
 dconf write /org/gnome/settings-daemon/plugins/power/ambient-enabled false
 
 dconf write /org/gnome/desktop/search-providers/disable "['io.elementary.appcenter.desktop']"
+
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Hyper>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-applications-backward "['<Hyper>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-windows "['<Alt>Tab']"
+dconf write /org/gnome/desktop/wm/keybindings/switch-windows-backward "['<Shift><Alt>Tab']"

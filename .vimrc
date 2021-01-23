@@ -1,17 +1,18 @@
 set nocompatible
 filetype off
-au Bufread,BufNewFile *.feature set filetype=gherkin
-au Bufread,BufNewFile *.raml set filetype=yaml
-au Bufread,BufNewFile *.svg set filetype=xml
-au Bufread,BufNewFile *.md set filetype=markdown
+autocmd Bufread,BufNewFile *.feature set filetype=gherkin
+autocmd Bufread,BufNewFile *.raml set filetype=yaml
+autocmd Bufread,BufNewFile *.svg set filetype=xml
+autocmd Bufread,BufNewFile *.md set filetype=markdown
 autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 foldmethod=indent
 autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype eruby setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype bib setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufReadPost *.cs setlocal expandtab tabstop=4 shiftwidth=4
@@ -20,6 +21,9 @@ autocmd Filetype jinja setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype markdown setlocal spell expandtab tabstop=3 shiftwidth=3 textwidth=80
 autocmd Filetype vue setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2
+autocmd Filetype scss setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.yml set syntax=sls
 autocmd BufReadPost *.txt set tw=80
 au BufReadPost *.yml set syntax=sls
@@ -52,7 +56,10 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'posva/vim-vue'
 Bundle "lepture/vim-jinja"
 Bundle 'ervandew/supertab'
-
+Plugin 'hashivim/vim-terraform'
+Plugin 'numirias/semshi'
+Plugin 'tpope/vim-commentary'
+Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'altercation/vim-colors-solarized'
 
 
@@ -60,6 +67,7 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
+
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -76,8 +84,6 @@ let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["custom", "UltiSnips"]
-
-let g:EasyMotion_leader_key = '<Leader>'
 
 " Syntax checkers
 let g:syntastic_python_checkers = ['flake8']
@@ -122,6 +128,7 @@ set autowrite
 set scrolloff=5
 set mouse=""
 set nojoinspaces
+set foldlevelstart=99
 
 let mapleader = ","
 inoremap jj <Esc>
@@ -131,6 +138,8 @@ cnoremap nohex %!xxd -r<CR>
 nnoremap <silent> ,/ :let @/ = ""<CR>
 nnoremap <C-N> :n<CR>
 nnoremap Y y$
+nnoremap <Space> <Nop>
+nnoremap <Space> za
 
 nnoremap "* "+
 vnoremap "* "+
@@ -143,6 +152,23 @@ onoremap "* "+
 nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
+
+
+" Semshi settings
+function CustomHighlights()
+    hi semshiImported        ctermfg=214 guifg=#ffaf00
+endfunction
+autocmd FileType python call CustomHighlights()
+autocmd ColorScheme * call CustomHighlights()
+
+"let g:semshi#excluded_hl_groups = []
+
+nmap <silent> <Tab> :Semshi goto name next<CR>
+nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+nmap <silent> <Leader>rr :Semshi rename<CR>
+
+nmap <silent> <Leader>gu :Semshi goto unresolved first<CR>
+nmap <silent> <Leader>gp :Semshi goto parameterUnused first<CR>
 
 
 function! s:DiffWithSaved()

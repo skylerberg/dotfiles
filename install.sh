@@ -1,12 +1,11 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli cmake fdfind
+sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli cmake fdfind appmenu-gtk3-module xsel
 
 sudo apt-get install python-software-properties
 
 # Install Neovim
 if ! command -v nvim >/dev/null 2>&1; then
-	sudo add-apt-repository ppa:neovim-ppa/stable
 	sudo apt-get update
 	sudo apt-get install -y neovim
 	pip install neovim
@@ -14,7 +13,6 @@ fi
 
 # Install Go
 if ! command go >/dev/null 2>&1; then
-	sudo add-apt-repository ppa:longsleep/golang-backports
 	sudo apt-get update
 	sudo apt-get install -y golang-go
 fi
