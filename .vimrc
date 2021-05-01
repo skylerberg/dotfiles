@@ -24,7 +24,7 @@ autocmd Filetype vue setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype scss setlocal expandtab tabstop=2 shiftwidth=2
-autocmd BufReadPost *.yml set syntax=sls
+autocmd BufReadPost *.dot setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.txt set tw=80
 au BufReadPost *.yml set syntax=sls
 
