@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install -y git vim tmux redshift mixxx python-dev python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake python3-dev clang chrome-gnome-shell dconf-cli cmake fdfind appmenu-gtk3-module xsel
+sudo apt-get install -y git vim tmux python3-dev python3-pip exuberant-ctags curl gnome-tweaks software-properties-common build-essential cmake clang chrome-gnome-shell dconf-cli cmake xsel
 
 sudo apt-get install python-software-properties
 
