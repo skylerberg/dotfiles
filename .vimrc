@@ -25,6 +25,7 @@ autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype scss setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.dot setlocal expandtab tabstop=2 shiftwidth=2
+autocmd BufReadPost *.jsx setlocal expandtab tabstop=2 shiftwidth=2
 autocmd BufReadPost *.txt set tw=80
 au BufReadPost *.yml set syntax=sls
 
@@ -54,6 +55,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'neovim/nvim-lspconfig'
 Plugin 'skylerberg/coq_nvim'
 Plugin 'ms-jpq/coq.artifacts'
+Plugin 'neoclide/vim-jsx-improve'
 
 call vundle#end()
 
