@@ -1,7 +1,9 @@
 [user]
 	name = Skyler Berg
-	email = skylertheberg@gmail.com
+	email = skylerberg@users.noreply.github.com
 [push]
 	default = current
 [core]
 	excludesfile = ~/.gitignore
+[init]
+	defaultBranch = main
